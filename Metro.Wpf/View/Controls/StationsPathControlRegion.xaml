@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Metro.Wpf.View.Controls.StationsPathControlRegion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Metro.Wpf.View.Controls"
+             xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <ListBox ItemsSource="{Binding StationsPath}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="3"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Border CornerRadius="20"
+                                Height="30"
+                                Width="30"
+                                Margin="0 0 10 0"
+                                Padding="6 2 0 0 "
+                                Background="{Binding Branch.ColorHex}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" >
+                            <Label Content="{Binding Branch.Id}"
+                                   Foreground="White"
+                                   />
+                        </Border>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</UserControl>
