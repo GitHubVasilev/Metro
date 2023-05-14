@@ -35,6 +35,10 @@ namespace Metro.Services.Services
         {
             int branchesCount = _branchesRepository.GetAll().Count();
             Station startStation = _stationsRepository.Find(m => m.Id == idStation).First();
+            if (startStation is null) 
+            {
+                return new List<StationDTO>();
+            }
             StationLink? link = null;
             double minDistant = int.MaxValue;
             Queue<StationLink> queue = new Queue<StationLink>();
