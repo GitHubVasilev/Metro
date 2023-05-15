@@ -68,8 +68,8 @@ namespace Metro.Services.Services
                     continue;
                 }
 
-                var notVisitedStation = routings[temp.Current].Where(m => !temp.VisitedRoute.Contains(m));
-                foreach (Route route in notVisitedStation)
+                var notVisitedRoute = routings[temp.Current].Where(m => !temp.VisitedRoute.Contains(m));
+                foreach (Route route in notVisitedRoute)
                 {
                     queue.Enqueue(new StationLink() 
                     {
