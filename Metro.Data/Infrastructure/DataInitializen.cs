@@ -135,7 +135,7 @@ namespace Metro.Data.Infrastructure
             public BranchT BranchT { get; set; }
         }
 
-        private class RouteT
+        private struct RouteT
         {
             public StationT StartStationT { get; set; }
             public StationT FinishStationT { get; set; }
@@ -707,13 +707,6 @@ namespace Metro.Data.Infrastructure
                 },
                 new RouteT
                 {
-                    StartStationT = Stations.Where(m => m.Id == 32).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 10).First(),
-                    Length = 0,
-                    Time = 0,
-                },
-                new RouteT
-                {
                     StartStationT = Stations.Where(m => m.Id == 12).First(),
                     FinishStationT = Stations.Where(m => m.Id == 11).First(),
                     Length = 10,
@@ -749,13 +742,6 @@ namespace Metro.Data.Infrastructure
                 },
                 new RouteT
                 {
-                    StartStationT = Stations.Where(m => m.Id == 18).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 19).First(),
-                    Length = 10,
-                    Time = 10,
-                },
-                new RouteT
-                {
                     StartStationT = Stations.Where(m => m.Id == 19).First(),
                     FinishStationT = Stations.Where(m => m.Id == 18).First(),
                     Length = 10,
@@ -784,13 +770,6 @@ namespace Metro.Data.Infrastructure
                 },
                 new RouteT
                 {
-                    StartStationT = Stations.Where(m => m.Id == 30).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 21).First(),
-                    Length = 0,
-                    Time = 0,
-                },
-                new RouteT
-                {
                     StartStationT = Stations.Where(m => m.Id == 23).First(),
                     FinishStationT = Stations.Where(m => m.Id == 22).First(),
                     Length = 10,
@@ -802,13 +781,6 @@ namespace Metro.Data.Infrastructure
                     FinishStationT = Stations.Where(m => m.Id == 23).First(),
                     Length = 10,
                     Time = 10,
-                },
-                new RouteT
-                {
-                    StartStationT = Stations.Where(m => m.Id == 9).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 23).First(),
-                    Length = 0,
-                    Time = 0,
                 },
                 new RouteT
                 {
@@ -854,13 +826,6 @@ namespace Metro.Data.Infrastructure
                 },
                 new RouteT
                 {
-                    StartStationT = Stations.Where(m => m.Id == 21).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 30).First(),
-                    Length = 0,
-                    Time = 0,
-                },
-                new RouteT
-                {
                     StartStationT = Stations.Where(m => m.Id == 32).First(),
                     FinishStationT = Stations.Where(m => m.Id == 31).First(),
                     Length = 10,
@@ -873,13 +838,6 @@ namespace Metro.Data.Infrastructure
                     Length = 10,
                     Time = 10,
                 },
-                new RouteT
-                {
-                    StartStationT = Stations.Where(m => m.Id == 10).First(),
-                    FinishStationT = Stations.Where(m => m.Id == 32).First(),
-                    Length = 0,
-                    Time = 0,
-                }
             };
         #endregion
     }

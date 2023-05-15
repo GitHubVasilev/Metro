@@ -22,7 +22,7 @@ namespace Metro.Services.Models.ServiceModels
         /// <summary>
         /// Список посещенных станций
         /// </summary>
-        public HashSet<Station> VisitedStation { get; set; } = null!;
+        public HashSet<Route> VisitedRoute { get; set; } = null!;
         /// <summary>
         /// Длинна пути
         /// </summary>

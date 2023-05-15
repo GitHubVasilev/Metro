@@ -34,6 +34,9 @@ namespace Metro.Services.Services
         public List<StationDTO> MinTimeForAllBranch(int idStation)
         {
             int branchesCount = _branchesRepository.GetAll().Count();
+            Dictionary<Station, List<Route>> routings = _stationsRepository.GetAll()
+                .ToDictionary(k => k, v => _routesRepository.GetAll()
+                .Where(m => m.StartStationId == v.Id).ToList());
             Station startStation = _stationsRepository.Find(m => m.Id == idStation).First();
             if (startStation is null) 
             {
@@ -47,14 +50,13 @@ namespace Metro.Services.Services
                 Prev = null,
                 Current = startStation,
                 VisitedBranches = new() { startStation.Branch },
-                VisitedStation = new() { startStation },
+                VisitedRoute = new HashSet<Route>(),
                 WayLangth = 0,
 
             });
             while (queue.Count > 0)
             {
                 var temp = queue.Dequeue();
-                temp.VisitedStation.Add(temp.Current);
 
                 if (branchesCount == temp.VisitedBranches.Count)
                 {
@@ -66,8 +68,7 @@ namespace Metro.Services.Services
                     continue;
                 }
 
-                var notVisitedStation = _routesRepository.Find(m => m.StartStation.Id == temp.Current.Id
-                && !temp.VisitedStation.Contains(m.FinishStation));
+                var notVisitedStation = routings[temp.Current].Where(m => !temp.VisitedRoute.Contains(m));
                 foreach (Route route in notVisitedStation)
                 {
                     queue.Enqueue(new StationLink() 
@@ -75,7 +76,7 @@ namespace Metro.Services.Services
                         Prev = temp,
                         Current = route.FinishStation,
                         VisitedBranches = new HashSet<Branch>(temp.VisitedBranches) { route.FinishStation.Branch },
-                        VisitedStation = new HashSet<Station>(temp.VisitedStation),
+                        VisitedRoute = new HashSet<Route>(temp.VisitedRoute) { route },
                         WayLangth = temp.WayLangth + route.Time
                     });
                 }
